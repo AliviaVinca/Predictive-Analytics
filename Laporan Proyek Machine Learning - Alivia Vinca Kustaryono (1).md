@@ -111,34 +111,53 @@ Target yang akan kita gunakan dalam memprediksi risiko klaim ini adalah `claim_s
 Dari 41 variabel di atas, variabel `policy_id`,`segment`, `model`,`max_torque`, `max_power` dihapus dikarenakan terlalu banyak kategori unik (high cardinality) tanpa encoding.
 
 ### Exploratory Data Analysis (EDA)
+
 Exploratory Data Analysis (EDA) adalah tahap penting dalam proses analisis data yang bertujuan untuk mengeksplorasi data secara visual dan statistik guna memahami karakteristiknya, menemukan pola atau hubungan antar variabel, mengidentifikasi outlier, serta mendeteksi data tidak normal atau data yang hilang. Tahap ini menjadi dasar pengambilan keputusan sebelum memasuki proses preprocessing dan pemodelan.
 EDA pada project ini akan dilakukan statistik deskriptif, distribusi variabel target, visualisasi distribusi fitur, heatmap korelasi data numerik dan korelasi fitur numerik dengan target.
 
 **Statistik Deskriptif**
+
 Statistik deskriptif dapat dilihat dengan memanggil `insurance.describe()` dan `insurance.info()`
-![insurance.info() (1)](https://drive.google.com/file/d/1W3pOHFS0aXl4oOIeMi-ZirA58Mna2MFk/view?usp=drive_link)
-![insurance.info() (2)](https://drive.google.com/file/d/1ZZiDhs2TeznkJKVsdx2j5wUY4hi1LmyE/view?usp=drive_link)
-![insurance.describe() (1)](https://drive.google.com/file/d/13R4otIfkrOrSwar-MlkDvFS-xqmN35YE/view?usp=drive_link)
-![insurance.describe() (2)](https://drive.google.com/file/d/1aKVrNtLb9aN5ccn5IMynZIGXRAQs8DDt/view?usp=drive_link)
+![insurance info() (1)](https://github.com/user-attachments/assets/473416b0-41d7-4e05-95cf-817fb4474ea2)
+![insurance info() (2)](https://github.com/user-attachments/assets/c882ab5b-6a87-4fc7-a64c-c42046e385c7)
+Gambar di atas merupakan hasil dari pemanggilan `insurance.info()` dan didapatkan kesimpulan bahwa terdapat 58592 baris dan 41 kolom awal.
+
+![insurance describe() (1)](https://github.com/user-attachments/assets/836b0ff8-8088-432d-922c-f045e13fab8e)
+![insurance describe() (2)](https://github.com/user-attachments/assets/c8e0e597-9ff0-45ff-a544-e3c74df92ad3)
+Gambar di atas merupakan hasil dari pemanggilan `insurance.describe()` agar kita dapat mengetahui fitur kategorik nya seperti mean standar deviasi dan lain-lain.
+
 
 **Distribusi Variabel Target**
+
 Distribusi variabel target dapat dilihat dengan menghitung `claim_status`
-![insurance['claim_status'].value_counts()](Gambar/insurance.info() (2).png)
-![Distribusi variabel dengan target piechart](https://drive.google.com/file/d/1WGguKR06c47laKqb4aVERO46wE2GQQKz/view?usp=drive_link)
-![Distribusi variabel dengan target barchart ](https://drive.google.com/file/d/1tuoEtF9U18If8DVluXQTTJdHpbIhWC1f/view?usp=drive_link)
+![Hitung Claim Status](https://github.com/user-attachments/assets/bc4fe0f0-0497-400c-bee3-c6c7defd53d3)
+![Distribusi Variabel Target Piechart](https://github.com/user-attachments/assets/281b99db-6084-44ed-ade7-b9c88aac8c18)
+![Distribusi Variabel Target Barchart](https://github.com/user-attachments/assets/4c0986bf-e44c-4234-a55d-337ae47e652c)
+Gambar di atas merupakan persebaran `claim_status` baik secara numerik, piechart maupun barchart.
+
 
 **Visualisasi Distribusi Fitur**
-Fitur seperti `region_density`, `airbags`, dan `ncap_rating` menunjukkan potensi korelasi dengan target (`claim_status`).
-![Barchart distribusi fitur region_density, airbags, ncap_rating, claim_status ](https://drive.google.com/file/d/1ppU9z2sxpYwlDHWnQF0s8kniXW99YF6O/view?usp=drive_link)
+
+Fitur seperti `vehicle_age`, `costumer_age`, `region_density`, `airbags`, dan `ncap_rating` menunjukkan potensi korelasi dengan target (`claim_status`).
+![Barplot distribusi fitur](https://github.com/user-attachments/assets/a4d2157e-63fd-4410-b066-9525fb32741e)
+Gambar di atas merupakan merupakan visualisasi barchart dari distribusi fitur yang menunjukan korelasi dengan target. 
+
 
 **Heatmap Korelasi Data Numerik**
-![Heatmap korelasi data numerik sebelum preprocessing data](https://drive.google.com/file/d/1vidYm_JayzVUcZ0Lqvs9L1BGhU3x3jSJ/view?usp=drive_link)
-![Heatmap korelasi data numerik setelah preprocessing data](https://drive.google.com/file/d/1cdgwn5u7rgmLvGSVGh0sBVm_vgErQXPw/view?usp=drive_link)
+
+![Heatmap](https://github.com/user-attachments/assets/56032c0d-f1c0-4df4-9f82-3a9c39c21a5c)
+Gambar di atas merupakan Heatmap korelasi data numerik sebelum preprocessing data.
+![Heatmap Korelasi Data Numerik](https://github.com/user-attachments/assets/cdea76db-7386-4ae5-9b8a-bab44c9d4b58)
+Gambar di atas merupakan Heatmap korelasi data numerik setelah preprocessing data.
+
 
 **Korelasi Fitur Numerik Dengan Target**
+
 Fitur keamanan kendaraan umumnya memiliki korelasi negatif terhadap klaim berisiko, menandakan fitur tersebut membantu mengurangi risiko klaim.
-![Korelasi setiap fitur numerik dengan target sebelum preprocessing data](https://drive.google.com/file/d/1rCEjWYnbROdK_e5mBh4HYiKYEWnq9Ef6/view?usp=drive_link)
-![Korelasi setiap fitur numerik dengan target setelah preprocessing data](https://drive.google.com/file/d/1WXp4j2PBvMD9ucoRgUXzgCE89NTk-Hg8/view?usp=drive_link)
+![Korelasi](https://github.com/user-attachments/assets/d9bae52f-03b1-469a-a423-2deb9f958247)
+Gambar di atas merupakan korelasi setiap fitur numerik dengan target sebelum preprocessing data.
+![Korelasi Setiap Fitur Numerik dengan target](https://github.com/user-attachments/assets/d1fa4137-5d4b-406c-8535-bb1723c4178d)
+Gambar di atas merupakan korelasi setiap fitur numerik dengan target setelah preprocessing data.
 
 
 ## Data Preparation
