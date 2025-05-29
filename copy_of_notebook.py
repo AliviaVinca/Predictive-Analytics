@@ -18,6 +18,7 @@ Email : mc006d5x2041@student.devacademy.id
 
 ## Import Libraries
 """
+!pip install catboost
 
 import pandas as pd
 import numpy as np
@@ -38,7 +39,6 @@ from sklearn.metrics import roc_curve, auc
 from sklearn.pipeline import Pipeline
 import joblib
 
-!pip install catboost
 
 """## Import Dataset"""
 
