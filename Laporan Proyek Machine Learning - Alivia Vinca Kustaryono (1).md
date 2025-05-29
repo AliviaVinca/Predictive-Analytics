@@ -123,7 +123,7 @@ Statistik deskriptif dapat dilihat dengan memanggil `insurance.describe()` dan `
 
 **Distribusi Variabel Target**
 Distribusi variabel target dapat dilihat dengan menghitung `claim_status`
-![insurance['claim_status'].value_counts()](https://drive.google.com/file/d/1MZh48_IAlc2V9dl0tkAKOy88jLhJPIV2/view?usp=drive_link)
+![insurance['claim_status'].value_counts()](Gambar/insurance.info() (2).png)
 ![Distribusi variabel dengan target piechart](https://drive.google.com/file/d/1WGguKR06c47laKqb4aVERO46wE2GQQKz/view?usp=drive_link)
 ![Distribusi variabel dengan target barchart ](https://drive.google.com/file/d/1tuoEtF9U18If8DVluXQTTJdHpbIhWC1f/view?usp=drive_link)
 
